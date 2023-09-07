@@ -1,0 +1,39 @@
+.text-center {
+  text-align: center;
+}
+
+.my-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.my-form label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.my-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.my-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+}
+
+.my-form button:hover {
+  background-color: #218838;
+}
