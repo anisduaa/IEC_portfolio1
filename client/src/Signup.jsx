@@ -1,16 +1,13 @@
-// src/Singup.jsx
-
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './app.css';
+import { Link, useNavigate } from 'react-router-dom'; // Import statements corrected
+import './app.css'; // Make sure this path is correct
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 function Signup() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -19,7 +16,7 @@ function Signup() {
       .post('http://localhost:3001/register', { name, email, password })
       .then((result) => {
         console.log(result);
-        navigate('./login');
+        navigate('/login'); // Use an absolute path
       })
       .catch((err) => console.log(err));
   };
@@ -73,7 +70,7 @@ function Signup() {
 
         <p>Already Have an Account </p>
         <Link
-          to="/login"
+          to="/login" // Use an absolute path
           className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
         >
           Login

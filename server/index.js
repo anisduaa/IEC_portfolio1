@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const EmployeeModel = require('./models/Employee');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+const JWT_SECRET = 'secret';
 
 mongoose.connect('mongodb://127.0.0.1:27017/employee', {
   useNewUrlParser: true,
@@ -20,7 +23,12 @@ db.once('open', () => {
 
 app.post('/register', (req, res) => {
   EmployeeModel.create(req.body)
-    .then((employee) => res.json(employee)) // Changed employees to employee
+    .then((employee) => {
+      const token = jwt.sign({ id: employee._id }, JWT_SECRET, {
+        expiresIn: '9000h',
+      });
+      res.json({ employee, token });
+    })
     .catch((err) => res.json(err));
 });
 
